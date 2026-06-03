@@ -3,6 +3,9 @@
   "version": "0.2.0",
   "private": true,
   "type": "module",
+  "engines": {
+    "node": "20.x"
+  },
   "scripts": {
     "build": "node scripts/vercel-build.mjs",
     "start": "node scripts/local-dev-server.mjs",

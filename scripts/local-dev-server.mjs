@@ -5,7 +5,8 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const rootDir = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const port = Number(process.env.PORT || 3005);
-const host = process.env.HOST || (process.env.RENDER ? '0.0.0.0' : '127.0.0.1');
+const shouldBindPublicHost = process.env.RENDER || process.env.RAILWAY_ENVIRONMENT || process.env.RAILWAY_PROJECT_ID;
+const host = process.env.HOST || (shouldBindPublicHost ? '0.0.0.0' : '127.0.0.1');
 
 async function loadEnv() {
   try {

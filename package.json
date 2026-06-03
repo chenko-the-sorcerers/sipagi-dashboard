@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vercel dev",
+    "build": "node scripts/vercel-build.mjs",
     "dev:local": "node scripts/local-dev-server.mjs",
     "static": "python3 -m http.server 4173",
     "postinstall": "prisma generate",
@@ -21,7 +21,6 @@
     "zod": "^3.24.1"
   },
   "devDependencies": {
-    "prisma": "^5.22.0",
-    "vercel": "^37.14.0"
+    "prisma": "^5.22.0"
   }
 }

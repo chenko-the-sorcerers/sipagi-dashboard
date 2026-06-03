@@ -344,6 +344,20 @@ async function bootstrap() {
     }
 }
 
+function startApp() {
+    bootstrap().catch((error) => {
+        authChecked = true;
+        sessionUser = null;
+        app.innerHTML = `
+            <div class="sipagi-auth-loading">
+                <span class="sipagi-dot-loader"><i></i><i></i><i></i></span>
+                <p>SIPAGI sedang menyiapkan sesi. Muat ulang halaman jika tampilan belum terbuka.</p>
+                <small style="color:#64748b;">${error?.message || 'Bootstrap gagal dijalankan.'}</small>
+            </div>
+        `;
+    });
+}
+
 document.addEventListener('click', async (event) => {
     const logoutButton = event.target.closest('[data-action="logout"]');
     if (!logoutButton) return;
@@ -354,4 +368,8 @@ document.addEventListener('click', async (event) => {
 });
 
 bindSessionActivityTracking();
-document.addEventListener('DOMContentLoaded', bootstrap);
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', startApp, { once: true });
+} else {
+    startApp();
+}

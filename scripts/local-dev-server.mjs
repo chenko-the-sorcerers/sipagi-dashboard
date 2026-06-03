@@ -5,7 +5,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const rootDir = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const port = Number(process.env.PORT || 3005);
-const host = '127.0.0.1';
+const host = process.env.HOST || (process.env.RENDER ? '0.0.0.0' : '127.0.0.1');
 
 async function loadEnv() {
   try {
@@ -97,6 +97,15 @@ await loadEnv();
 http.createServer(async (request, response) => {
   const url = new URL(request.url, `http://${request.headers.host}`);
   try {
+    if (url.pathname === '/healthz') {
+      response.writeHead(200, {
+        'Content-Type': 'application/json; charset=utf-8',
+        'Cache-Control': 'no-store'
+      });
+      response.end(JSON.stringify({ ok: true, service: 'sipagi-dashboard' }));
+      return;
+    }
+
     if (url.pathname.startsWith('/api/') && await runApi(request, response, url)) return;
     await serveStatic(request, response, url);
   } catch (error) {

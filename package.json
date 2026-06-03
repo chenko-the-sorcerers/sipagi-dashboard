@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "node scripts/vercel-build.mjs",
+    "start": "node scripts/local-dev-server.mjs",
     "dev:local": "node scripts/local-dev-server.mjs",
     "static": "python3 -m http.server 4173",
     "postinstall": "prisma generate",

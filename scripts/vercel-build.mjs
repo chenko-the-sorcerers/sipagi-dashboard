@@ -14,4 +14,10 @@ await fs.cp(appDir, outputAppDir, {
   filter: (source) => !source.includes(`${path.sep}.DS_Store`)
 });
 
+await fs.writeFile(path.join(outputDir, '_redirects'), [
+  '/ /app/ 302',
+  '/app/* /app/index.html 200',
+  ''
+].join('\n'));
+
 console.log('SIPAGI static app prepared in public/app');

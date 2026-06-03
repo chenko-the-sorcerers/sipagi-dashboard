@@ -6,7 +6,7 @@ import {
   upsertSheetRow
 } from './googleSheetsApi.js';
 
-const DATA_SOURCE = window.SIPAGI_DATA_SOURCE || localStorage.getItem('sipagi.dataSource') || 'api';
+const DATA_SOURCE = window.SIPAGI_DATA_SOURCE || localStorage.getItem('sipagi.dataSource') || 'gas';
 const API_BASE = window.SIPAGI_API_BASE || '/api/v1';
 function resourcePath(resource) {
   return String(resource).includes('/') ? `/api/${resource}` : `${API_BASE}/${resource}`;

@@ -1,4 +1,4 @@
-export const GAS_ENDPOINT = '/api/bridge/gas';
+export const GAS_ENDPOINT = window.SIPAGI_GAS_ENDPOINT || 'https://script.google.com/macros/s/AKfycbwefvZxPKsEX6Bm3jBgX99-HdIR_H6t481ce_UXV1RE7O4fiBhkS-2XUAO2cI6fp_u4/exec';
 
 const globalSheets = new Set(['roles', 'role_permissions', 'sppg_units']);
 

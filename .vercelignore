@@ -1,0 +1,15 @@
+api/
+lib/
+prisma/
+render.yaml
+railway.json
+netlify.toml
+scripts/local-dev-server.mjs
+scripts/migrate-gas-to-neon.mjs
+scripts/reset-and-seed-sipagi-dataset.mjs
+scripts/run-sipagi-qa.mjs
+scripts/seed-food-catalog.mjs
+scripts/seed-gas-auth.mjs
+scripts/seed-mbg-lpj-data.mjs
+scripts/seed-real-qa-data.mjs
+outputs/
